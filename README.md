@@ -1,41 +1,8 @@
 # et_storm-cookbook
 
-TODO: Enter the cookbook description here.
+![Plastic wrap](http://www.deltabrands.com/images/Urun/b_1211201293645605.jpg)
 
-## Supported Platforms
-
-TODO: List your supported platforms.
-
-## Attributes
-
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['et_storm']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
-
-## Usage
-
-### et_storm::default
-
-Include `et_storm` in your node's `run_list`:
-
-```json
-{
-  "run_list": [
-    "recipe[et_storm::default]"
-  ]
-}
-```
+This is just a wrapper cookbook.  To learn about Storm attributes, see our fork of the [Storm Cookbook](https://github.com/evertrue/storm).
 
 ## Contributing
 
