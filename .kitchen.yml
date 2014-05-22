@@ -1,15 +1,53 @@
 ---
 driver:
   name: vagrant
+  customize:
+    cpus: 4
+    memory: 1536
+  require_chef_omnibus: true
 
 provisioner:
-  name: chef_solo
+  name: chef_zero
+  encrypted_data_bag_secret_key_path: <%= ENV['HOME'] %>/.chef/encrypted_data_bag_secret
+  client_rb:
+    environment: dev
 
 platforms:
-  - name: ubuntu-12.04
-  - name: centos-6.4
+- name: ubuntu-12.04
 
 suites:
-  - name: default
-    run_list:
-    attributes:
+- name: zookeeper1
+  run_list:
+  - recipe[apt]
+  - recipe[et_zookeeper]
+  - role[zookeeper]
+  driver_config:
+    network:
+    - [ 'private_network', {ip: '192.168.33.10'}]
+  attributes:
+    exhibitor:
+      opts:
+        configtype: file
+- name: supervisor
+  run_list:
+  - recipe[apt]
+  - recipe[et_tools]
+  - recipe[et_storm::supervisor]
+  driver_config:
+    network:
+    - [ 'private_network', {ip: '192.168.33.12'}]
+- name: nimbus
+  run_list: 
+  - recipe[apt]
+  - recipe[et_hostname]
+  - recipe[et_tools]
+  - recipe[et_storm::nimbus]
+  driver_config:
+    network:
+    - [ 'private_network', {ip: '192.168.33.11'}]
+  attributes:
+    et_hostname:
+      addl_hosts_entries:
+        - '10.0.2.15 dev-storm-nimbus-1b.priv.evertrue.com dev-storm-nimbus-1b'
+        - '192.168.33.10 dev-zookeeper-1b.priv.evertrue.com dev-zookeeper 1b'
+        - '192.168.33.10 dev-storm-supervisor-1b.priv.evertrue.com dev-storm-supervisor-1b'
