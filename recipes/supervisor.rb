@@ -9,7 +9,7 @@
 
 include_recipe 'et_storm::default'
 
-node.set['storm']['supervisor']['workers'] = 3
+node.set['storm']['supervisor']['workers'] = 4
 node.set['storm']['supervisor']['childopts'] = '-Xmx768m'
 node.set['storm']['worker']['childopts'] = '-Xmx768m ' \
   '-XX:+UseConcMarkSweepGC -Dcom.sun.management.jmxremote ' \
