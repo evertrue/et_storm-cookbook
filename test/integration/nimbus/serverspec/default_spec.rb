@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe command('pgrep java') do
-  it { should return_exit_status 0 }
+  its(:exit_status) { should eq 0 }
 end
 
 describe 'Storm Nimbus' do
@@ -23,7 +23,7 @@ describe 'Storm Nimbus' do
   end
 
   describe command('wget -O - http://localhost:8080/') do
-    it { should return_stdout(/Nimbus uptime/) }
+    its(:stdout) { should match(/Nimbus uptime/) }
   end
 end
 

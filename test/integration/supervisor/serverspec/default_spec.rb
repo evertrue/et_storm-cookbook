@@ -12,11 +12,11 @@ describe 'Storm Supervisor' do
 end
 
 describe command('tar -tzf /tmp/kitchen/cache/httpcomponents-client-4.2-bin.tar.gz') do
-  it { should return_stdout(/README\.txt/) }
+  its(:stdout) { should match(/README\.txt/) }
 end
 
 describe command('pgrep java') do
-  it { should return_exit_status 0 }
+  its(:exit_status) { should eq 0 }
 end
 
 describe file('/tmp/kitchen/cache/httpcomponents-client-4.2') do
