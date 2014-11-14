@@ -1,13 +1,9 @@
-# 1.0.1
+# Changelog
 
-Bump worker slots
+## v1.0.1 (2014-09-23)
 
-# 0.1.0
+* Bump worker slots
 
-Initial release of et_storm
+## v0.1.0 (2014-05-22)
 
-* Enhancements
-  * an enhancement
-
-* Bug Fixes
-  * a bug fix
+* Initial release of et_storm
