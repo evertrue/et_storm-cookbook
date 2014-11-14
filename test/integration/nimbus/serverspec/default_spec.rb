@@ -10,22 +10,20 @@ describe 'Storm Nimbus' do
   #   expect(port(6702)).to be_listening
   # end
 
-  it 'has a running service of nimbus' do
-    expect(service('nimbus')).to be_running
+  describe service('nimbus') do
+    it { should be_running }
   end
 
-  it 'Should be listening on tcp6/6627' do
-    expect(port(6627)).to be_listening.with('tcp6')
+  describe port(6627) do
+    it { should be_listening.with('tcp6') }
   end
 
-  it 'Should be listening on tcp6/8080' do
-    expect(port(8080)).to be_listening.with('tcp6')
+  describe port(8080) do
+    it { should be_listening.with('tcp6') }
   end
 
-  it 'WebUI should contain string "Nimbus uptime"' do
-    expect(
-      command('wget -O - http://localhost:8080/')
-    ).to return_stdout(/Nimbus uptime/)
+  describe command('wget -O - http://localhost:8080/') do
+    it { should return_stdout(/Nimbus uptime/) }
   end
 end
 
