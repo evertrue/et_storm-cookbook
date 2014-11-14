@@ -8,3 +8,4 @@ version          '1.0.1'
 
 depends 'apache_storm', '= 3.0.0'
 depends 'et_swap', '= 1.0.1'
+depends 'sudo',  '~> 2.7'
