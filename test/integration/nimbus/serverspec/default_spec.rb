@@ -25,6 +25,10 @@ describe 'Storm Nimbus' do
   describe command('wget -O - http://localhost:8080/') do
     its(:stdout) { should match(/Nimbus uptime/) }
   end
+
+  describe file '/opt/storm/current/logs' do
+    it { is_expected.to be_linked_to '/mnt/storm/logs' }
+  end
 end
 
 describe 'Storm Topology deploy sudoers' do

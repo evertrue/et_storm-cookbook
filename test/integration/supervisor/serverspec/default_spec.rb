@@ -9,6 +9,10 @@ describe 'Storm Supervisor' do
   it 'has a running service of supervisor' do
     expect(service('supervisor')).to be_running
   end
+
+  describe file '/opt/storm/current/logs' do
+    it { is_expected.to be_linked_to '/mnt/storm/logs' }
+  end
 end
 
 describe command('tar -tzf /tmp/kitchen/cache/httpcomponents-client-4.2-bin.tar.gz') do
