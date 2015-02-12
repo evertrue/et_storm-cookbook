@@ -18,7 +18,8 @@ suites:
 - name: zookeeper1
   run_list:
   - recipe[apt]
-  - recipe[et_zookeeper]
+  - recipe[exhibitor::default]
+  - recipe[exhibitor::service]
   - role[zookeeper]
   driver_config:
     network:
@@ -26,8 +27,9 @@ suites:
       - ip: 192.168.33.10
   attributes:
     exhibitor:
-      opts:
-        configtype: file
+      version: 1.5.2
+    zookeeper:
+      service_style: exhibitor
 - name: supervisor
   run_list:
   - recipe[apt]
