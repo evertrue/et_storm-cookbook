@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.0.1 (2015-02-27)
+
+* Stop using pessimistic versioning on apache_storm (it got us in trouble)
+
 ## v2.0.0 (2015-02-12)
 
 * Upgrade to `apache_storm` v4.0.0
