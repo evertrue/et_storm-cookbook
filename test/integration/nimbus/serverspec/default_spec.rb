@@ -22,8 +22,8 @@ describe 'Storm Nimbus' do
     it { should be_listening.with('tcp6') }
   end
 
-  describe command('wget -O - http://localhost:8080/') do
-    its(:stdout) { should match(/Nimbus uptime/) }
+  describe command('wget -O - http://localhost:8080/api/v1/cluster/summary') do
+    its(:stdout) { should match(/nimbusUptime/) }
   end
 
   describe file '/opt/storm/current/logs' do

@@ -33,7 +33,7 @@ end
   'httpclient-4.2.jar',
   'httpcore-4.2.jar'
 ].each do |jar_file|
-  describe file("/opt/storm/apache-storm-0.9.1-incubating/lib/#{jar_file}") do
+  describe file("/opt/storm/apache-storm-0.9.3/lib/#{jar_file}") do
     it { should be_file }
   end
 end
