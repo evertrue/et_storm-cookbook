@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.0.4 (2015-03-02)
+
+* Remove old supplemental libraries installed by us
+
 ## v2.0.3 (2015-03-02)
 
 * Update all of the supplemental libraries and group notifications into their own ruby block
