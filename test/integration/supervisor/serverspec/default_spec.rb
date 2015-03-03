@@ -15,7 +15,7 @@ describe 'Storm Supervisor' do
   end
 end
 
-describe command('tar -tzf /tmp/kitchen/cache/httpcomponents-client-4.2-bin.tar.gz') do
+describe command('tar -tzf /tmp/kitchen/cache/httpcomponents-client-4.4-bin.tar.gz') do
   its(:stdout) { should match(/README\.txt/) }
 end
 
@@ -23,17 +23,21 @@ describe command('pgrep java') do
   its(:exit_status) { should eq 0 }
 end
 
-describe file('/tmp/kitchen/cache/httpcomponents-client-4.2') do
+describe file('/tmp/kitchen/cache/httpcomponents-client-4.4') do
   it { should be_directory }
 end
 
 [
-  'guava-14.0.1.jar',
-  'commons-codec-1.6.jar',
-  'httpclient-4.2.jar',
-  'httpcore-4.2.jar'
+  'guava-18.0.jar',
+  'commons-codec-1.9.jar',
+  'httpclient-4.4.jar',
+  'httpcore-4.4.jar'
 ].each do |jar_file|
   describe file("/opt/storm/apache-storm-0.9.3/lib/#{jar_file}") do
     it { should be_file }
   end
+end
+
+describe file('/opt/storm/apache-storm-0.9.3/lib/commons-codec-1.6.jar') do
+  it { is_expected.not_to be_file }
 end
