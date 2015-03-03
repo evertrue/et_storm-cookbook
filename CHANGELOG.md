@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.0.3 (2015-03-02)
+
+* Update all of the supplemental libraries and group notifications into their own ruby block
+
 ## v2.0.2 (2015-03-02)
 
 * Bump apache_storm to 4.0.1
