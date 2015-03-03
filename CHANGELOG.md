@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.0.5 (2015-03-03)
+
+* Restructure notifies (again), always copying files that come from a local source
+
 ## v2.0.4 (2015-03-02)
 
 * Remove old supplemental libraries installed by us
