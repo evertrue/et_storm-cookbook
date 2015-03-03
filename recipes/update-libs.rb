@@ -19,6 +19,11 @@ execute 'extract_httpcomponents' do
   notifies :run, 'ruby_block[replace configs]'
 end
 
+delete_files = %w(commons-codec-1.6
+                  guava-14.0.1
+                  httpclient-4.2
+                  httpcore-4.2)
+
 ruby_block 'replace configs' do
   block do
     Chef::Log.info('Replacing configs')
@@ -27,7 +32,9 @@ ruby_block 'replace configs' do
   subscribes :run, 'execute[extract_storm]'
   notifies :create, "remote_file[#{node['storm']['lib_dir']}/httpclient-#{httpcomponents_version}.jar]"
   notifies :create, "remote_file[#{node['storm']['lib_dir']}/httpcore-#{httpcomponents_version}.jar]"
-  notifies :delete, "file[#{node['storm']['lib_dir']}/commons-codec-1.6.jar]"
+  delete_files.each do |d_file|
+    notifies :delete, "file[#{node['storm']['lib_dir']}/#{d_file}.jar]"
+  end
   notifies :create, "remote_file[#{node['storm']['lib_dir']}/guava-18.0.jar]"
   notifies :create, "remote_file[#{node['storm']['lib_dir']}/commons-codec-1.9.jar]"
 end
@@ -56,9 +63,7 @@ end
   end
 end
 
-%w(
-  commons-codec-1.6
-).each do |cur_file|
+delete_files.each do |cur_file|
   file "#{node['storm']['lib_dir']}/#{cur_file}.jar" do
     action :nothing
   end
