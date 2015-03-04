@@ -36,7 +36,7 @@ end
     owner 'storm'
     group 'storm'
     mode 00644
-    source "file:///#{Chef::Config['file_cache_path']}/httpcomponents-client-#{httpcomponents_version}/lib/#{jar}-#{httpcomponents_version}.jar"
+    source "file://#{Chef::Config['file_cache_path']}/httpcomponents-client-#{httpcomponents_version}/lib/#{jar}-#{httpcomponents_version}.jar"
     notifies :restart, 'service[supervisor]'
   end
 end
@@ -67,7 +67,7 @@ remote_file "#{node['storm']['lib_dir']}/commons-codec-1.9.jar" do
   owner 'storm'
   group 'storm'
   mode 00644
-  source "file:///#{Chef::Config['file_cache_path']}/" \
+  source "file://#{Chef::Config['file_cache_path']}/" \
     "httpcomponents-client-#{httpcomponents_version}/lib/commons-codec-1.9.jar"
   notifies :restart, 'service[supervisor]'
 end
