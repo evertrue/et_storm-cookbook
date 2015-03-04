@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.0.6 (2015-03-04)
+
+* Remove extraneous slash from cache path references
+
 ## v2.0.5 (2015-03-03)
 
 * Restructure notifies (again), always copying files that come from a local source
