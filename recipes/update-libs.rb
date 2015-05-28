@@ -10,24 +10,6 @@
 httpcomponents_version = '4.4'
 httpcomponents_checksum = '77e78664598fc63c9bafbdecc1695dd59c7b5ba7afd8ef2a92ddae1074cdc579'
 
-execute 'extract_httpcomponents' do
-  command "tar xzf #{Chef::Config['file_cache_path']}/" \
-    "httpcomponents-client-#{httpcomponents_version}-bin.tar.gz"
-  cwd Chef::Config['file_cache_path']
-  creates "#{Chef::Config['file_cache_path']}/httpcomponents-client-#{httpcomponents_version}"
-  action :nothing
-end
-
-remote_file "#{Chef::Config['file_cache_path']}/httpcomponents-client-#{httpcomponents_version}-bin.tar.gz" do
-  owner 'root'
-  group 'root'
-  mode '0644'
-  source 'http://archive.apache.org/dist/httpcomponents/httpclient/binary/' \
-    "httpcomponents-client-#{httpcomponents_version}-bin.tar.gz"
-  checksum httpcomponents_checksum
-  notifies :run, 'execute[extract_httpcomponents]'
-end
-
 %w(
   httpclient
   httpcore
@@ -38,7 +20,28 @@ end
     mode 00644
     source "file://#{Chef::Config['file_cache_path']}/httpcomponents-client-#{httpcomponents_version}/lib/#{jar}-#{httpcomponents_version}.jar"
     notifies :restart, 'service[supervisor]'
+    action :nothing
   end
+end
+
+execute 'extract_httpcomponents' do
+  command "tar xzf #{Chef::Config['file_cache_path']}/" \
+    "httpcomponents-client-#{httpcomponents_version}-bin.tar.gz"
+  cwd Chef::Config['file_cache_path']
+  creates "#{Chef::Config['file_cache_path']}/httpcomponents-client-#{httpcomponents_version}"
+  action :nothing
+  notifies :create, "remote_file[#{node['storm']['lib_dir']}/httpclient-#{httpcomponents_version}.jar]"
+  notifies :create, "remote_file[#{node['storm']['lib_dir']}/httpcore-#{httpcomponents_version}.jar]"
+end
+
+remote_file "#{Chef::Config['file_cache_path']}/httpcomponents-client-#{httpcomponents_version}-bin.tar.gz" do
+  owner 'root'
+  group 'root'
+  mode '0644'
+  source 'http://archive.apache.org/dist/httpcomponents/httpclient/binary/' \
+    "httpcomponents-client-#{httpcomponents_version}-bin.tar.gz"
+  checksum httpcomponents_checksum
+  notifies :run, 'execute[extract_httpcomponents]'
 end
 
 %w(commons-codec-1.6
