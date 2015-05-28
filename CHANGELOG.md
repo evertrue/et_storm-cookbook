@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.0.11 (2015-05-28)
+
+* Allow sudo to be used with kill-topology script instead of storm kill
+
 ## v2.0.10 (2015-05-28)
 
 * Subscribe commons codec to extract_httpcomponents instead of extract_storm
