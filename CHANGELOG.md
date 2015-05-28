@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.0.10 (2015-05-28)
+
+* Subscribe commons codec to extract_httpcomponents instead of extract_storm
+
 ## v2.0.9 (2015-05-28)
 
 * Commons codec can't be installed until storm has been extracted
