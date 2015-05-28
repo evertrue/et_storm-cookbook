@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.0.7 (2015-05-28)
+
+* Create jar files by notifications from extract_httpcomponents instead of inline
+* Add some scripts for listing and killing topologies
+
 ## v2.0.6 (2015-03-04)
 
 * Remove extraneous slash from cache path references
