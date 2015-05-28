@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.0.9 (2015-05-28)
+
+* Commons codec can't be installed until storm has been extracted
+
 ## v2.0.8 (2015-05-28)
 
 * Remote files are created, not run...
