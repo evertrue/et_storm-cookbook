@@ -62,7 +62,7 @@ remote_file "#{node['storm']['lib_dir']}/guava-18.0.jar" do
     'filepath=com/google/guava/guava/18.0/guava-18.0.jar'
   checksum 'd664fbfc03d2e5ce9cab2a44fb01f1d0bf9dfebeccc1a473b1f9ea31f79f6f99'
   action :nothing
-  subscribes :run, 'execute[extract_storm]'
+  subscribes :create, 'execute[extract_storm]'
   notifies :restart, 'service[supervisor]'
 end
 
