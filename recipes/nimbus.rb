@@ -17,7 +17,7 @@ sudo 'deploy_topology' do
   user 'deploy'
   nopasswd true
   commands([
-    '/opt/storm/current/bin/storm kill *',
+    '/usr/bin/kill-topology *',
     '/opt/storm/current/bin/storm jar *'
   ])
 end
