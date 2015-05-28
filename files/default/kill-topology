@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if /usr/bin/list-topologies $1; then
+  /opt/storm/current/bin/storm kill -w 0 $1
+  exit $?
+else
+  echo "Topology $1 does not exist"
+  exit 0
+fi

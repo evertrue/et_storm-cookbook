@@ -21,3 +21,11 @@ sudo 'deploy_topology' do
     '/opt/storm/current/bin/storm jar *'
   ])
 end
+
+%w(list-topologies
+   kill-topology).each do |f|
+  cookbook_file "/usr/bin/#{f}" do
+    source f
+    mode   0755
+  end
+end
