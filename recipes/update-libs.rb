@@ -73,6 +73,6 @@ remote_file "#{node['storm']['lib_dir']}/commons-codec-1.9.jar" do
   source "file://#{Chef::Config['file_cache_path']}/" \
     "httpcomponents-client-#{httpcomponents_version}/lib/commons-codec-1.9.jar"
   action :nothing
-  subscribes :create, 'execute[extract_storm]'
+  subscribes :create, 'execute[extract_httpcomponents]'
   notifies :restart, 'service[supervisor]'
 end
