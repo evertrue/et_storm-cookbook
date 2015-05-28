@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.0.8 (2015-05-28)
+
+* Remote files are created, not run...
+
 ## v2.0.7 (2015-05-28)
 
 * Create jar files by notifications from extract_httpcomponents instead of inline
