@@ -6,6 +6,6 @@ description      'Installs/Configures et_storm'
 long_description 'Installs/Configures et_storm'
 version          '2.0.11'
 
-depends 'apache_storm', '= 4.0.1'
+depends 'apache_storm', '= 4.0.2'
 depends 'et_swap', '~> 1.0'
 depends 'sudo',  '~> 2.7'
