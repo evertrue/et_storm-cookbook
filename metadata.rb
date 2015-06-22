@@ -4,7 +4,7 @@ maintainer_email 'eric.herot@evertrue.com'
 license          'All rights reserved'
 description      'Installs/Configures et_storm'
 long_description 'Installs/Configures et_storm'
-version          '2.0.11'
+version          '2.0.12'
 
 depends 'apache_storm', '= 4.0.2'
 depends 'et_swap', '~> 1.0'

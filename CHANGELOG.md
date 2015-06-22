@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.0.12 (2015-06-22)
+
+* Bump apache_storm to 4.0.2
+
 ## v2.0.11 (2015-05-28)
 
 * Allow sudo to be used with kill-topology script instead of storm kill
