@@ -13,7 +13,8 @@ node.set['storm']['supervisor']['workers'] = 4
 node.set['storm']['yaml']['supervisor.childopts'] = '-Xmx768m'
 node.set['storm']['yaml']['worker.childopts'] = '-Xmx768m ' \
   '-XX:+UseConcMarkSweepGC -Dcom.sun.management.jmxremote ' \
-  '-Djdk.xml.entityExpansionLimit=0'
+  '-Djdk.xml.entityExpansionLimit=0 ' \
+  '-Dfile.encoding=UTF-8'
 
 include_recipe 'et_swap::disable'
 include_recipe 'apache_storm::supervisor'
