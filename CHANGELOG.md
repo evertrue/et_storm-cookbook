@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.0.13 (2015-10-05)
+
+* Force utf8 encoding on worker jvms
+
 ## v2.0.12 (2015-06-22)
 
 * Bump apache_storm to 4.0.2
