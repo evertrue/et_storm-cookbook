@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.0.0 (2016-08-30)
+
+* Upgrade to jdk 8
+
 ## v2.0.13 (2015-10-05)
 
 * Force utf8 encoding on worker jvms
