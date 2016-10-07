@@ -1,57 +1,37 @@
 ---
 driver:
-  name: vagrant
-  customize:
-    cpus: 4
-    memory: 1024
+  name: ec2
+  require_chef_omnibus: 12.14.60
+  aws_ssh_key_id: <%= ENV['AWS_KEYPAIR_NAME'] %>
+  region: us-east-1
+  availability_zone: us-east-1b
+  security_group_ids: ['ci-testing']
+  instance_type: c3.large
+  interface: public
+  tags:
+    Env: public
+    Type: test
+
+transport:
+  name: sftp
+  ssh_key: <%= ENV['EC2_SSH_KEY_PATH'] %>
 
 provisioner:
   name: chef_zero
-  encrypted_data_bag_secret_key_path: <%= ENV['HOME'] %>/.chef/encrypted_data_bag_secret
   client_rb:
     environment: dev
 
 platforms:
-- name: ubuntu-14.04
+  - name: ubuntu-14.04
+    driver:
+      tags:
+        Name: default-et-storm-ubuntu-1404
 
 suites:
-- name: zookeeper1
-  run_list:
-  - recipe[apt]
-  - recipe[exhibitor::default]
-  - recipe[exhibitor::service]
-  - role[zookeeper]
-  driver_config:
-    network:
-    - - private_network
-      - ip: 192.168.33.10
-  attributes:
-    exhibitor:
-      version: 1.5.2
-    zookeeper:
-      service_style: exhibitor
-- name: supervisor
+- name: default
   run_list:
   - recipe[apt]
   - recipe[et_tools]
+  - recipe[test_env::default]
   - recipe[et_storm::supervisor]
-  driver_config:
-    network:
-    - - private_network
-      - ip: 192.168.33.12
-- name: nimbus
-  run_list:
-  - recipe[apt]
-  - recipe[et_hostname]
-  - recipe[et_tools]
   - recipe[et_storm::nimbus]
-  driver_config:
-    network:
-    - - private_network
-      - ip: 192.168.33.11
-  attributes:
-    et_hostname:
-      addl_hosts_entries:
-      - 192.168.33.11 dev-storm-nimbus-1b.priv.evertrue.com dev-storm-nimbus-1b
-      - 192.168.33.10 dev-zookeeper-1b.priv.evertrue.com dev-zookeeper 1b
-      - 192.168.33.12 dev-storm-supervisor-1b.priv.evertrue.com dev-storm-supervisor-1b

@@ -34,7 +34,7 @@ end
 describe 'Storm Topology deploy sudoers' do
   describe file '/etc/sudoers.d/deploy_topology' do
     it { should be_file }
-    its(:content) { should include '/opt/storm/current/bin/storm kill *' }
+    its(:content) { should include '/usr/bin/kill-topology *' }
     its(:content) { should include '/opt/storm/current/bin/storm jar *' }
   end
 end
