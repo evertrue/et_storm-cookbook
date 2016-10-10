@@ -1,5 +1,13 @@
 # Changelog
 
+## v3.0.1 (2016-08-30)
+
+* Fix the tests
+    - Test that supervisor starts up with VAULT_TOKEN value set
+    - Add vault environment setup to the test harness
+    - Fix the test rig mainly by merging the whole cluster onto one server and installing ZK entirely with packages
+* Bump apache_storm to 4.1.0
+
 ## v3.0.0 (2016-08-30)
 
 * Upgrade to jdk 8
