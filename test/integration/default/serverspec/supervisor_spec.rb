@@ -41,3 +41,8 @@ end
 describe file('/opt/storm/apache-storm-0.9.3/lib/commons-codec-1.6.jar') do
   it { is_expected.not_to be_file }
 end
+
+supervisor_pid = File.read('/etc/service/supervisor/supervise/pid').strip
+describe file "/proc/#{supervisor_pid}/environ" do
+  it { is_expected.to contain 'TEST_TOKEN' }
+end
