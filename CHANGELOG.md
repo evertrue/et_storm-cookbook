@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.0.2 (2018-08-16)
+
+* Bump apache_storm to 4.1.1
+
 ## v3.0.1 (2016-08-30)
 
 * Fix the tests
